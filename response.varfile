@@ -1,0 +1,6 @@
+# install4j response file for PowerMaster Plus 1.2.2
+sys.adminRights$Boolean=true
+sys.component.588$Boolean=true
+sys.component.589$Boolean=false
+sys.installationDir=/usr/local/PMasterP
+sys.languageId=en
