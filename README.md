@@ -59,6 +59,12 @@ podman run \
     atlantisland-powermasterplus         
 ```
 
+## Use the software
+
+After the container has started, point your browser to the container host address, port 3052, to see the login page:
+
+![Login](img/login.png)
+
 ## ⚠️ Notice of Non-Affiliation and Responsibility
 
 This Docker image is provided solely for compatibility and convenience purposes. It is designed to facilitate the execution of software components originally intended for use on a specific hardware device, within a containerized environment.
