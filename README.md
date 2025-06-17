@@ -74,8 +74,8 @@ By using this Docker image, you agree that we assume no liability for any conseq
 
 ## Tested configuration
 
-Host OS: Ubuntu 22.04.5 LTS
-Host HW: x86_64
-Container runtime: Docker Community 27.4.0
+- **Host OS**: Ubuntu 22.04.5 LTS
+- **Host HW**: x86_64
+- **Container runtime**: Docker Community 27.4.0
 
  **Warning:** If you’re running your Docker container on top of a virtual machine (using Podman or Docker Desktop), and the USB-connected device (e.g., a UPS using HID over USB) is not passed through to the VM, the container may not see it! 
