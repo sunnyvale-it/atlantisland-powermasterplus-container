@@ -9,6 +9,12 @@ WORKDIR /tmp
 COPY ${PACKAGE_NAME} ./${PACKAGE_NAME}
 COPY response.varfile ./response.varfile
 
+RUN apt update && apt install -y \
+    usbutils \
+    libusb-1.0-0 \
+    libhidapi-hidraw0 \
+    && apt clean
+
 RUN chmod 755 ./${PACKAGE_NAME} && \
     ./${PACKAGE_NAME} \
     -q \

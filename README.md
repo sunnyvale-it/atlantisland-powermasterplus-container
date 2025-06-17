@@ -29,34 +29,23 @@ Before building (and running) this container image, ensure you have the followin
 Build the image:
 
 ```console
-podman build \
-    -t atlantisland-powermasterplus \    
-    --build-arg PACKAGE_NAME=pmasterp122-linux-x86_x64.sh
+docker build \
+    --build-arg PACKAGE_NAME=pmasterp122-linux-x86_x64.sh \
+    -t atlantisland-powermasterplus \
     .
 ```
 
 ## Run the container
 
-Run as a priviledged container (to be considered unsafe as it maps all the USB devices from your host into the container):
+Run as a priviledged container (you may change the `--device` value according to your USB hid device):
 
 ``` console
-podman run \
+docker run \
     -ti \
     -p 3052:3052 \
     --privileged \
-    -v /dev/bus/usb:/dev/bus/usb
-    atlantisland-powermasterplus         
-```
-
-or using an unpriviledged container (you need to know what ttyUSB port is used by the host, also.. it may stop working if the USB device gets unplugged/replugged):
-
-``` console
-podman run \
-    -ti \
-    -p 3052:3052 \
-    --privileged \
-    --device=/dev/ttyUSB0
-    atlantisland-powermasterplus         
+    --device=/dev/hidraw0 \
+    atlantisland-powermasterplus
 ```
 
 ## Use the software
@@ -82,3 +71,11 @@ Please note:
 - This project does not attempt to bypass any security mechanisms or licensing restrictions.
 
 By using this Docker image, you agree that we assume no liability for any consequences related to its use.
+
+## Tested configuration
+
+Host OS: Ubuntu 22.04.5 LTS
+Host HW: x86_64
+Container runtime: Docker Community 27.4.0
+
+ **Warning:** If you’re running your Docker container on top of a virtual machine (using Podman or Docker Desktop), and the USB-connected device (e.g., a UPS using HID over USB) is not passed through to the VM, the container may not see it! 
